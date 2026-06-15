@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,67 +7,65 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: #f8f9fa;
-  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+  background: #f5f5f5;
+  color: #222;
   min-height: 100vh;
 }
 
 #root {
-  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 32px 20px;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  background: #fff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 24px;
 }
 
 .navbar h1 {
   font-size: 20px;
   font-weight: 700;
-  color: #1a1a1a;
-  letter-spacing: -0.3px;
+  color: #111;
 }
 
 .navbar h1 span {
-  color: #6366f1;
+  color: #4f46e5;
 }
 
-/* Search */
 .search-input {
   width: 260px;
   padding: 9px 14px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid #e5e5e5;
   border-radius: 8px;
-  background: #fff;
-  color: #1a1a1a;
   font-size: 14px;
   outline: none;
-  transition: border 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+  color: #222;
+  transition: border 0.2s;
 }
 
 .search-input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  border-color: #4f46e5;
+  background: #fff;
 }
 
 .search-input::placeholder {
-  color: #aaa;
+  color: #bbb;
 }
 
-/* Table */
 .table-wrapper {
   background: #fff;
+  border: 1px solid #e5e5e5;
   border-radius: 12px;
-  border: 1px solid #ebebeb;
   overflow-x: auto;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 table {
@@ -74,21 +74,21 @@ table {
 }
 
 th {
-  padding: 12px 16px;
+  padding: 12px 18px;
   text-align: left;
   font-size: 11px;
   font-weight: 600;
-  color: #999;
+  color: #aaa;
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 td {
-  padding: 14px 16px;
+  padding: 14px 18px;
   font-size: 14px;
-  color: #333;
-  border-bottom: 1px solid #f3f3f3;
+  color: #444;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 tbody tr:last-child td {
@@ -104,47 +104,32 @@ tbody tr:hover {
   background: #fafafa;
 }
 
-.coin-name-cell {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.coin-name-cell img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+.rank {
+  color: #ccc;
+  font-size: 13px;
 }
 
 .coin-name-text {
   font-weight: 600;
-  color: #1a1a1a;
-  font-size: 14px;
+  color: #111;
 }
 
 .coin-symbol {
-  font-size: 12px;
   color: #aaa;
+  font-size: 12px;
   text-transform: uppercase;
-  margin-top: 1px;
-}
-
-.rank {
-  color: #bbb;
-  font-size: 13px;
 }
 
 .positive {
   color: #16a34a;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .negative {
   color: #dc2626;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Status */
 .status {
   text-align: center;
   padding: 80px;
@@ -152,7 +137,11 @@ tbody tr:hover {
   color: #aaa;
 }
 
-/* Detail Page */
+.status a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
 .detail-container {
   max-width: 680px;
   margin: 0 auto;
@@ -162,12 +151,11 @@ tbody tr:hover {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #6366f1;
+  color: #4f46e5;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  margin-bottom: 24px;
-  transition: opacity 0.15s;
+  margin-bottom: 20px;
 }
 
 .back-btn:hover {
@@ -176,10 +164,9 @@ tbody tr:hover {
 
 .detail-card {
   background: #fff;
-  border: 1px solid #ebebeb;
+  border: 1px solid #e5e5e5;
   border-radius: 14px;
   padding: 32px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .detail-header {
@@ -199,22 +186,22 @@ tbody tr:hover {
 .detail-header h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #111;
+  margin-bottom: 4px;
 }
 
 .detail-header span {
-  font-size: 13px;
+  font-size: 12px;
   color: #aaa;
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
 
 .detail-price {
-  font-size: 34px;
+  font-size: 36px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #111;
   margin-bottom: 24px;
-  letter-spacing: -0.5px;
 }
 
 .detail-grid {
@@ -224,7 +211,8 @@ tbody tr:hover {
 }
 
 .detail-item {
-  background: #f8f9fa;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
   border-radius: 10px;
   padding: 16px;
 }
@@ -241,7 +229,7 @@ tbody tr:hover {
 .detail-item .value {
   font-size: 15px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #111;
 }
 
 @media (max-width: 600px) {
@@ -250,10 +238,6 @@ tbody tr:hover {
     align-items: flex-start;
     gap: 12px;
   }
-  .search-input {
-    width: 100%;
-  }
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
+  .search-input { width: 100%; }
+  .detail-grid { grid-template-columns: 1fr; }
 }

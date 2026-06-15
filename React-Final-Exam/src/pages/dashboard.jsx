@@ -8,34 +8,20 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchCoins();
+    fetch("https://corsproxy.io/?https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd")
+      .then((r) => r.json())
+      .then((data) => setCoins(data))
+      .catch((err) => setError(err.message || "Failed to fetch"))
+      .finally(() => setLoading(false));
   }, []);
 
-  const fetchCoins = async () => {
-    try {
-      const response = await fetch(
-        "https://corsproxy.io/?https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
-      );
-
-      // if (!response.ok) throw new Error(`Error ${response.status}: ${response.statusText}`);/=
-
-      const data = await response.json();
-      setCoins(data);
-    } catch (err) {
-      setError(err.message || "Failed to fetch data");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const filteredCoins = coins.filter(
-    (coin) =>
-      coin.name.toLowerCase().includes(search.toLowerCase()) ||
-      coin.symbol.toLowerCase().includes(search.toLowerCase())
+  const filtered = coins.filter(
+    (c) =>
+      c.name.toLowerCase().includes(search.toLowerCase()) ||
+      c.symbol.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -46,30 +32,30 @@ function Dashboard() {
       </div>
 
       {loading && <div className="status">Loading coins...</div>}
-      {error && <div className="status" style={{ color: "#ef4444" }}>⚠️ {error}</div>}
+      {error && <div className="status" style={{ color: "#f87171" }}>⚠ {error}</div>}
 
       {!loading && !error && (
         <div className="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th>Rank</th>
-                <th>Image</th>
-                <th>Name</th>
+                <th>#</th>
+                <th>Coin</th>
                 <th>Symbol</th>
-                <th>Current Price</th>
+                <th>Price</th>
+                <th>24h %</th>
                 <th>Market Cap</th>
               </tr>
             </thead>
             <tbody>
-              {filteredCoins.length > 0 ? (
-                filteredCoins.map((coin) => (
+              {filtered.length > 0 ? (
+                filtered.map((coin) => (
                   <CoinCard key={coin.id} coin={coin} navigate={navigate} />
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" style={{ textAlign: "center", padding: "40px", color: "#64748b" }}>
-                    No coins found for "{search}"
+                  <td colSpan="6" style={{ textAlign: "center", padding: "60px", color: "rgba(255,255,255,0.2)" }}>
+                    No results for "{search}"
                   </td>
                 </tr>
               )}
